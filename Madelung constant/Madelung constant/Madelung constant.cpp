@@ -3,24 +3,19 @@
 using namespace std;
 
 
-double MadelungConst(int n) {
-	double Madelung = 1;
+double MadelungConst(float i) {
 	double sumPart = 0;
-	for (int i = 1; i < n; i++) {
-		sumPart += pow(-1, (i + 1)) / (i * (i + 1));
+	int n = 1;
+	while (i < (1 / (n * (n + 1)))) {
+		sumPart += pow(-1, n + 1) / (n * (n + 1));
+		n++;
 	}
-	Madelung += sumPart;
-	return Madelung;
+	cout << "Number of cycles: "  << n << endl;
+	return sumPart + 1;
 }
 
 int main()
 {
-	int index;
-	cout << "Enter the number of cycles: ";
-	cin >> index;
-	
-	cout << "The result is: " << MadelungConst(index) << endl;
-
-	
+	cout << "The result is: " << MadelungConst(0.001) << endl;
 	return 0;
 }
